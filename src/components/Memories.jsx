@@ -4,33 +4,33 @@ import { Star, Sparkles } from 'lucide-react';
 const Memories = () => {
   const memoriesData = [
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "First Birthday Celebration",
+      imgSrc: "../../public/images/1.jpg",
+      // text: "First Birthday Celebration",
       date: "March 2023"
     },
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Family Birthday Dinner",
+      imgSrc: "../../public/images/2.jpg",
+      // text: "Family Birthday Dinner",
       date: "April 2023"
     },
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Birthday Party Games",
+      imgSrc: "../../public/images/3.jpg",
+      // text: "Birthday Party Games",
       date: "June 2023"
     },
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Cake Cutting Moment",
+      imgSrc: "../../public/images/4.jpg",
+      // text: "Cake Cutting Moment",
       date: "August 2023"
     },
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Birthday Surprises",
+      imgSrc: "../../public/images/5.jpg",
+      // text: "Birthday Surprises",
       date: "October 2023"
     },
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Birthday Adventures",
+      imgSrc: "../../public/images/6.jpg",
+      // text: "Birthday Adventures",
       date: "December 2023"
     },
   ];
@@ -63,7 +63,7 @@ const Memories = () => {
                   <img
                     src={memory.imgSrc}
                     alt="Memory"
-                    className="w-full h-64 object-cover rounded-t-xl"
+                    className="w-full h-96 object-cover rounded-t-xl"
                   />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">

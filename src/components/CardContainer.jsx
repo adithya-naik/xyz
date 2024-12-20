@@ -30,7 +30,7 @@ const CustomCard = ({ imgSrc, text, gradient }) => {
         <img
           src={imgSrc}
           alt="Card"
-          className="w-full h-56 object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-72 object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
         />
       </div>
       
@@ -51,23 +51,23 @@ const CustomCard = ({ imgSrc, text, gradient }) => {
 const CardContainer = () => {
   const cardData = [
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Birthday Celebrations",
+      imgSrc: "../../public/images/1.jpg",
+      text: "",
       gradient: "from-pink-500 to-purple-500"
     },
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Party Packages",
+      imgSrc: "../../public/images/2.jpg",
+      text: "",
       gradient: "from-blue-500 to-teal-500"
     },
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Special Themes",
+      imgSrc: "../../public/images/3.jpg",
+      text: "",
       gradient: "from-orange-500 to-red-500"
     },
     {
-      imgSrc: "/api/placeholder/300/200",
-      text: "Custom Events",
+      imgSrc: "../../public/images/10.jpg",
+      text: "",
       gradient: "from-green-500 to-emerald-500"
     }
   ];

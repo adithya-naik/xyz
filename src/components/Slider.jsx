@@ -95,20 +95,20 @@ const Slider = () => {
       {/* Navigation Buttons */}
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg hover:bg-white transition-colors duration-300"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg hover:bg-white transition-colors duration-300 z-20"
       >
         <ChevronLeft className="w-6 h-6 text-pink-600" />
       </button>
       
       <button
         onClick={handleNext}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg hover:bg-white transition-colors duration-300"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg hover:bg-white transition-colors duration-300 z-20"
       >
         <ChevronRight className="w-6 h-6 text-purple-600" />
       </button>
 
       {/* Dots Navigation */}
-      <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
         {cards.map((_, index) => (
           <div
             key={index}

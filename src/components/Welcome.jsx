@@ -20,10 +20,10 @@ const Welcome = ({ onBirthdayWishComplete }) => {
       {isTypingVisible && (
         <div>
           <h1 className="text-6xl">
-            Welcome to{' '}
+            Surprise{' '}
             <span className="text-blue-600 font-bold text-6xl">
               <TypewriterEffect
-                words={['YouDay!', 'Biic!', 'Celebrons!']}
+                words={['Aditi!', 'Anu!', 'AnuDeeb!','Wake up!','😊']}
                 onComplete={handleTypingComplete}
               />
             </span>
@@ -31,22 +31,9 @@ const Welcome = ({ onBirthdayWishComplete }) => {
         </div>
       )}
 
-      {showCongrats && (
-        <div className="space-y-4 mt-8">
-          <div><img className="text-center m-auto" src="https://via.assets.so/img.jpg?w=400&h=150&tc=blue&bg=#cecece" alt="" /></div>
-          <h1 className="text-7xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text animate-bounce">
-            🎂 Happy Birthday! 🎂
-          </h1>
-          <div className="space-y-4 animate-fade-in">
-            <p className="text-2xl text-gray-700 animate-slide-up">
-              May your day be filled with joy, laughter, and unforgettable moments!
-            </p>
-            <div className="text-3xl animate-bounce">
-              🎈 🎉 🎁 🎊
-            </div>
-          </div>
-        </div>
-      )}
+      {/* {showCongrats && (
+        
+      )} */}
     </div>
   );
 };

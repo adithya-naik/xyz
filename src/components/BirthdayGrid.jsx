@@ -4,37 +4,37 @@ import { Cake, Gift, PartyPopper, Heart, Star, Music } from 'lucide-react';
 const BirthdayGrid = () => {
   const items = [
     {
-      src: "/api/placeholder/300/200",
+      src: "../../public/images/3.jpg",
       text: "Happy Birthday!",
       icon: Cake,
       gradient: "from-pink-500 to-purple-500"
     },
     {
-      src: "/api/placeholder/400/225",
+      src: "../../public/images/4.jpg",
       text: "Make a Wish!",
       icon: Star,
       gradient: "from-blue-500 to-teal-500"
     },
     {
-      src: "/api/placeholder/300/300",
+      src: "../../public/images/5.jpg",
       text: "Surprise!",
       icon: Gift,
       gradient: "from-purple-500 to-pink-500"
     },
     {
-      src: "/api/placeholder/400/300",
+      src: "../../public/images/7.jpg",
       text: "Celebrate!",
       icon: PartyPopper,
       gradient: "from-teal-500 to-blue-500"
     },
     {
-      src: "/api/placeholder/300/200",
+      src: "../../public/images/8.jpg",
       text: "Let's Party!",
       icon: Music,
       gradient: "from-pink-500 to-purple-500"
     },
     {
-      src: "/api/placeholder/300/300",
+      src: "../../public/images/9.jpg",
       text: "Cheers!",
       icon: Heart,
       gradient: "from-purple-500 to-blue-500"
@@ -47,7 +47,7 @@ const BirthdayGrid = () => {
         <div className="flex items-center justify-center gap-3 mb-8">
           <Star className="text-pink-500" size={24} fill="pink" />
           <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 text-transparent bg-clip-text">
-            Birthday Moments
+            With you
           </h2>
           <Star className="text-purple-500" size={24} fill="purple" />
         </div>
@@ -68,7 +68,7 @@ const BirthdayGrid = () => {
                   <img
                     src={item.src}
                     alt={`Birthday Item ${index + 1}`}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-64 object-contain transition-transform duration-500 group-hover:scale-110"
                   />
                   
                   {/* Icon overlay */}

@@ -5,8 +5,8 @@ import SwipeableCardList from "./components/SwipeableCardList";
 import Memories from "./components/Memories";
 import Carousel from "./components/Carousel";
 import Slider from "./components/Slider";
-import BirthdayGrid from './components/BirthdayGrid';
-import DeveloperAndContributors from './components/DeveloperAndContributors';
+import BirthdayGrid from "./components/BirthdayGrid";
+import DeveloperAndContributors from "./components/DeveloperAndContributors";
 
 // Custom cursor component
 const CustomCursor = () => {
@@ -19,8 +19,8 @@ const CustomCursor = () => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener('mousemove', updatePosition);
-    return () => window.removeEventListener('mousemove', updatePosition);
+    window.addEventListener("mousemove", updatePosition);
+    return () => window.removeEventListener("mousemove", updatePosition);
   }, []);
 
   useEffect(() => {
@@ -31,40 +31,42 @@ const CustomCursor = () => {
       const newEffect = {
         id: Date.now(),
         x: e.clientX,
-        y: e.clientY
+        y: e.clientY,
       };
-      setClickEffects(prev => [...prev, newEffect]);
+      setClickEffects((prev) => [...prev, newEffect]);
 
       setTimeout(() => {
-        setClickEffects(prev => prev.filter(effect => effect.id !== newEffect.id));
-      }, 1000);
+        setClickEffects((prev) =>
+          prev.filter((effect) => effect.id !== newEffect.id)
+        );
+      }, 200);
     };
 
-    window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
   }, []);
 
   return (
     <>
-      <div 
+      <div
         className={`fixed w-6 h-6 rounded-full pointer-events-none z-[60] mix-blend-difference transition-transform duration-150 ${
-          clicked ? 'scale-75' : 'scale-100'
+          clicked ? "scale-75" : "scale-100"
         }`}
         style={{
           left: position.x - 12,
           top: position.y - 12,
-          backgroundColor: '#0000FF',
-          boxShadow: '0 0 20px rgba(0, 0, 255, 0.5)',
+          backgroundColor: "#0000FF",
+          boxShadow: "0 0 20px rgba(0, 0, 255, 0.5)",
         }}
       />
-      {clickEffects.map(effect => (
+      {clickEffects.map((effect) => (
         <div
           key={effect.id}
           className="fixed pointer-events-none z-[60] text-blue-600 font-bold text-lg animate-click-effect"
           style={{
             left: effect.x,
             top: effect.y,
-            transform: 'translate(-50%, -50%)'
+            transform: "translate(-50%, -50%)",
           }}
         >
           AnuDeepthi ✨
@@ -77,10 +79,10 @@ const CustomCursor = () => {
 const FloatingEmoji = ({ emoji, delay }) => {
   const randomX = Math.random() * 100;
   const randomDuration = 15 + Math.random() * 10;
-  
+
   return (
     <div
-      className="fixed text-4xl animate-float select-none pointer-events-none z-50"
+      className="fixed text-4xl select-none pointer-events-none z-50"
       style={{
         left: `${randomX}%`,
         animation: `float ${randomDuration}s infinite`,
@@ -91,6 +93,7 @@ const FloatingEmoji = ({ emoji, delay }) => {
     </div>
   );
 };
+
 
 const Balloon = ({ x, y, color, onFinish }) => {
   const [bursting, setBursting] = useState(false);
@@ -135,7 +138,7 @@ function App() {
     if (showComponents) {
       const createEmoji = () => ({
         id: Math.random(),
-        emoji: Math.random() > 0.5 ? '🙂‍↕' : '🙂‍↔',
+        emoji: Math.random() > 0.5 ? "🙂‍↕" : "🙂‍↔",
         delay: Math.random() * 2,
       });
 
@@ -155,13 +158,16 @@ function App() {
   }, [showComponents]);
 
   const components = [
-    { component: <CardContainer />, name: "Card Container" },
-    { component: <Memories />, name: "Memories" },
-    { component: <SwipeableCardList />, name: "Swipeable Cards" },
-    { component: <Carousel />, name: "Circular Swipe Carousel" },
-    { component: <Slider />, name: "Slider" },
-    { component: <BirthdayGrid />, name: "Birthday Grid" },
-    { component: <DeveloperAndContributors />, name: "Developer And Contributors" },
+    { component: <CardContainer />, name: "Your Portraits" },
+    { component: <Memories />, name: "" },
+    { component: <SwipeableCardList />, name: "" },
+    // { component: <Carousel />, name: "Circular Swipe Carousel" },
+    // { component: <Slider />, name: "Slider" },
+    { component: <BirthdayGrid />, name: "" },
+    {
+      component: <DeveloperAndContributors />,
+      name: "",
+    },
   ];
 
   const handleBirthdayWishComplete = () => {
@@ -183,7 +189,7 @@ function App() {
       const timer = setTimeout(() => {
         setShowTransition(false);
         setShowComponents(true);
-      }, 2000);
+      }, 10000);
 
       return () => clearTimeout(timer);
     }
@@ -221,8 +227,29 @@ function App() {
             />
           ))}
           {/* Celebration Message */}
-          <div className="text-4xl font-bold text-white animate-bounce px-4">
-            Let's celebrate!
+          <div className="space-y-8 mt-8 px-6 md:px-12">
+            <div className="flex justify-center items-center">
+              <img
+                className="rounded-full shadow-lg object-cover w-48 h-48 transition-transform transform hover:scale-105"
+                src="./public/images/1.jpg"
+                alt="Birthday Image"
+              />
+            </div>
+
+            <h1 className="text-6xl font-extrabold text-center text-transparent bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text animate-pulse">
+              🎂 Happiest Birthday! 🎂
+            </h1>
+
+            <div className="space-y-6 text-center animate-fade-in">
+              <p className="text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed">
+                May your day be filled with joy, laughter, and unforgettable
+                moments! Celebrate every second with happiness and love.
+              </p>
+
+              <button className="bg-black text-white text-2xl ">Wait few seconds</button>
+
+              <div className="text-4xl text-pink-500">🎈 🎉 🎁 🎊</div>
+            </div>
           </div>
         </div>
       ) : (

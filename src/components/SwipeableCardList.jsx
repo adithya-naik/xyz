@@ -7,33 +7,33 @@ const SwipeableCardList = () => {
   const projects = [
     {
       id: 1,
-      title: "Birthday Memories",
-      image: "/api/placeholder/1000/1000",
+      // title: "Birthday Memories",
+      video: "../../public/videos/1.mp4",  // Change to video file path
     },
     {
       id: 2,
-      title: "Special Celebrations",
-      image: "/api/placeholder/1000/1000",
+      // title: "Special Celebrations",
+      video: "../../public/videos/2.mp4",  // Placeholder video URL
     },
     {
       id: 3,
-      title: "Party Moments",
-      image: "/api/placeholder/1000/1000",
+      // title: "Party Moments",
+      video: "../../public/videos/3.mp4",  // Placeholder video URL
     },
     {
       id: 4,
-      title: "Cake Cutting",
-      image: "/api/placeholder/1000/1000",
+      // title: "Cake Cutting",
+      video: "../../public/videos/4.mp4",  // Placeholder video URL
     },
     {
       id: 5,
-      title: "Birthday Games",
-      image: "/api/placeholder/1000/1000",
+      // title: "Birthday Games",
+      video: "../../public/videos/5.mp4",  // Placeholder video URL
     },
     {
       id: 6,
-      title: "Happy Wishes",
-      image: "/api/placeholder/1000/1000",
+      // title: "Happy Wishes",
+      video: "../../public/videos/6.mp4",  // Placeholder video URL
     },
   ];
 
@@ -54,7 +54,7 @@ const SwipeableCardList = () => {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Star className="text-pink-500" size={24} fill="pink" />
             <h4 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 text-transparent bg-clip-text">
-              Birthday Moments
+              Ur Clicks
             </h4>
             <Star className="text-purple-500" size={24} fill="purple" />
           </div>
@@ -75,10 +75,13 @@ const SwipeableCardList = () => {
                   transform: `translateX(-${currentIndex * 100}%)`,
                 }}
               >
-                <img
-                  src={project.image}
+                <video
+                  src={project.video}
                   alt={project.title}
-                  className="w-full h-96 object-cover"
+                  className="w-full h-96 object-contain"
+                  autoPlay
+                  loop
+                  muted
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
