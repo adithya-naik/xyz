@@ -16,12 +16,12 @@ const CustomCursor = () => {
 
   useEffect(() => {
     const updatePosition = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+        setPosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener("mousemove", updatePosition);
     return () => window.removeEventListener("mousemove", updatePosition);
-  }, []);
+}, []);
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -78,19 +78,26 @@ const CustomCursor = () => {
 
 const FloatingEmoji = ({ emoji, delay }) => {
   const randomX = Math.random() * 100;
-  const randomDuration = 15 + Math.random() * 10;
+    const randomY = Math.random() * 100;
+    const randomDuration = 10 + Math.random() * 10;
+    const randomRotation = Math.random() * 360;
 
-  return (
-    <div
-      className="fixed text-4xl select-none pointer-events-none z-50"
-      style={{
-        left: `${randomX}%`,
-        animation: `float ${randomDuration}s infinite`,
-        animationDelay: `${delay}s`,
-      }}
-    >
-      {emoji}
-    </div>
+    return (
+      <div
+          className="fixed text-4xl select-none pointer-events-none z-50"
+          style={{
+              left: `${randomX}%`,
+              top: `${randomY}%`,
+              animation: `float ${randomDuration}s linear infinite`,
+              animationDelay: `${delay}s`,
+              transform: `rotate(${randomRotation}deg)`,
+          }}
+          data-aos="fade-in"
+          data-aos-duration="100"
+          data-aos-easing="ease-in-out"
+      >
+          {emoji}
+      </div>
   );
 };
 
@@ -136,26 +143,28 @@ function App() {
 
   useEffect(() => {
     if (showComponents) {
-      const createEmoji = () => ({
-        id: Math.random(),
-        emoji: Math.random() > 0.5 ? "🙂‍↕" : "🙂‍↔",
-        delay: Math.random() * 2,
-      });
-
-      setEmojis(Array.from({ length: 6 }, createEmoji));
-
-      const interval = setInterval(() => {
-        setEmojis((prev) => {
-          const newEmojis = [...prev];
-          const replaceIndex = Math.floor(Math.random() * newEmojis.length);
-          newEmojis[replaceIndex] = createEmoji();
-          return newEmojis;
+        const createEmoji = () => ({
+            id: Math.random(),
+            emoji: Math.random() > 0.5 ? "🙂‍↕" : "🙂‍↔",
+            delay: Math.random() * 1,
         });
-      }, 3000);
 
-      return () => clearInterval(interval);
+        setEmojis(Array.from({ length: 10 }, createEmoji));
+
+        const interval = setInterval(() => {
+            setEmojis((prevEmojis) => {
+                const newEmojis = [...prevEmojis];
+                const replaceIndex = Math.floor(Math.random() * newEmojis.length);
+                newEmojis[replaceIndex] = createEmoji();
+                return newEmojis;
+            });
+        }, 5000);
+
+        return () => clearInterval(interval);
+    } else {
+        setEmojis([]);
     }
-  }, [showComponents]);
+}, [showComponents]);
 
   const components = [
     { component: <CardContainer />, name: "Your Portraits" },
