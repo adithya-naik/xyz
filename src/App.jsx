@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Welcome from './components/Welcome';
-import CardContainer from './components/CardContainer';
-import SwipeableCardList from './components/SwipeableCardList';
-import Memories from './components/Memories';
-import Carousel from './components/Carousel';
-
+import React, { useState, useEffect, useRef } from "react";
+import Welcome from "./components/Welcome";
+import CardContainer from "./components/CardContainer";
+import SwipeableCardList from "./components/SwipeableCardList";
+import Memories from "./components/Memories";
+import Carousel from "./components/Carousel";
+import Slider from "./components/Slider";
+import BirthdayGrid from './components/BirthdayGrid'
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showTransition, setShowTransition] = useState(false);
@@ -15,7 +16,9 @@ function App() {
     { component: <CardContainer />, name: "Card Container" },
     { component: <Memories />, name: "Memories" },
     { component: <SwipeableCardList />, name: "Swipeable Cards" },
-    { component: <Carousel />, name: "Circular Swipe Carousel" }
+    { component: <Carousel />, name: "Circular Swipe Carousel" },
+    { component: <Slider />, name: "Slider" },
+    { component:  <BirthdayGrid />, name: "BirthdayGrid" },
   ];
 
   const handleBirthdayWishComplete = () => {
@@ -35,21 +38,21 @@ function App() {
 
   const handleNext = () => {
     // Log refs to verify they are being set
-    console.log('Refs:', componentsRef.current);
+    console.log("Refs:", componentsRef.current);
 
     // Find the current component in the viewport
     const currentIndex = componentsRef.current.findIndex(
       (ref) => ref && ref.getBoundingClientRect().top >= 0
     );
 
-    console.log('Current index:', currentIndex);
+    console.log("Current index:", currentIndex);
 
     if (currentIndex !== -1) {
       const nextIndex = (currentIndex + 1) % components.length;
-      console.log('Next index:', nextIndex);
+      console.log("Next index:", nextIndex);
 
       // Smooth scroll to the next component
-      componentsRef.current[nextIndex]?.scrollIntoView({ behavior: 'smooth' });
+      componentsRef.current[nextIndex]?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -63,32 +66,34 @@ function App() {
             Let's celebrate!
           </div>
         </div>
-      ) : showComponents && (
-        <div className="container mx-auto px-4 py-8">
-          {components.map((comp, index) => (
-            <div
-              key={index}
-              ref={(el) => {
-                // Ensure that the refs are set dynamically
-                componentsRef.current[index] = el;
-              }}
-              className="mb-16"
-            >
-              <h1 className="text-3xl font-bold text-center mb-8 text-white">
-                {comp.name}
-              </h1>
-              {comp.component}
+      ) : (
+        showComponents && (
+          <div className="container mx-auto px-4 py-8">
+            {components.map((comp, index) => (
+              <div
+                key={index}
+                ref={(el) => {
+                  // Ensure that the refs are set dynamically
+                  componentsRef.current[index] = el;
+                }}
+                className="mb-16"
+              >
+                <h1 className="text-3xl font-bold text-center mb-8 text-white">
+                  {comp.name}
+                </h1>
+                {comp.component}
+              </div>
+            ))}
+            <div className="fixed bottom-8 right-8">
+              <button
+                onClick={handleNext}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
+              >
+                Next
+              </button>
             </div>
-          ))}
-          <div className="fixed bottom-8 right-8">
-            <button
-              onClick={handleNext}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
-            >
-              Next
-            </button>
           </div>
-        </div>
+        )
       )}
     </div>
   );

@@ -1,0 +1,114 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Collage container */
+.birthday-collage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+}
+
+/* Collage item (image or video) */
+.collage-item {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  background: #fff;
+  filter: brightness(1);
+}
+
+/* Hover effect */
+.collage-item:hover {
+  transform: translateY(-10px) rotate(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.2); /* Increase brightness on hover */
+}
+
+/* Media (image or video) styling */
+.collage-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Text overlay */
+.collage-text {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px); /* Initially a bit lower */
+}
+
+/* Show text on hover */
+.collage-item:hover .collage-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animations for a more dynamic collage */
+@keyframes collageAnimation {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Applying animation for items */
+.collage-item:nth-child(odd) {
+  animation: collageAnimation 6s infinite ease-in-out;
+}
+
+.collage-item:nth-child(even) {
+  animation: collageAnimation 6s infinite ease-in-out 2s;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .birthday-collage {
+    flex-direction: column;
+  }
+
+  .collage-item {
+    width: 90%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .birthday-collage {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .collage-item {
+    width: 90%;
+    height: 180px;
+  }
+
+  .collage-text {
+    font-size: 14px;
+  }
+}
