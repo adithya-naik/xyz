@@ -2,20 +2,20 @@ import React from 'react';
 
 const CustomCard = ({ imgSrc, text, gradient }) => {
   return (
-    <div className="group perspective relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-300 ease-in-out transform-gpu">
+    <div className="group relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out transform-gpu">
       {/* Gradient Overlay */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
+        className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-300`}
       />
       <div className="relative">
         <img
           src={imgSrc}
           alt="Card"
-          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105 rounded-t-lg"
         />
       </div>
       <div className="p-6">
-        <p className="text-lg font-semibold text-center bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent transform transition-all duration-300 group-hover:scale-105">
+        <p className="text-xl font-semibold text-center text-gray-800 transform transition-all duration-300 group-hover:scale-105">
           {text}
         </p>
       </div>
@@ -48,7 +48,7 @@ const CardContainer = () => {
   ];
 
   return (
-    <div className="bg-gray-100 min-h-screen p-8">
+    <div className="bg-gray-100 p-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         {cardData.map((card, index) => (
           <CustomCard
