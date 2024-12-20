@@ -4,37 +4,37 @@ import { Cake, Gift, PartyPopper, Heart, Star, Music } from 'lucide-react';
 const BirthdayGrid = () => {
   const items = [
     {
-      src: "../../public/images/3.jpg",
+      src: "/images/3.jpg",
       text: "Happy Birthday!",
       icon: Cake,
       gradient: "from-pink-500 to-purple-500"
     },
     {
-      src: "../../public/images/4.jpg",
+      src: "/images/4.jpg",
       text: "Make a Wish!",
       icon: Star,
       gradient: "from-blue-500 to-teal-500"
     },
     {
-      src: "../../public/images/5.jpg",
+      src: "/images/5.jpg",
       text: "Surprise!",
       icon: Gift,
       gradient: "from-purple-500 to-pink-500"
     },
     {
-      src: "../../public/images/7.jpg",
+      src: "/images/7.jpg",
       text: "Celebrate!",
       icon: PartyPopper,
       gradient: "from-teal-500 to-blue-500"
     },
     {
-      src: "../../public/images/8.jpg",
+      src: "/images/8.jpg",
       text: "Let's Party!",
       icon: Music,
       gradient: "from-pink-500 to-purple-500"
     },
     {
-      src: "../../public/images/9.jpg",
+      src: "/images/9.jpg",
       text: "Cheers!",
       icon: Heart,
       gradient: "from-purple-500 to-blue-500"

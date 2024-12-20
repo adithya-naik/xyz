@@ -5,17 +5,17 @@ const SwipeableCardList = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const projects = [
-    { id: 1, video: "../../public/videos/1.mp4" },
-    { id: 2, video: "../../public/videos/2.mp4" },
-    { id: 3, video: "../../public/videos/3.mp4" },
-    { id: 4, video: "../../public/videos/4.mp4" },
-    { id: 5, video: "../../public/videos/5.mp4" },
-    { id: 7, video: "../../public/videos/7.mp4" },
-    { id: 8, video: "../../public/videos/8.mp4" },
-    { id: 9, video: "../../public/videos/9.mp4" },
-    { id: 10, video: "../../public/videos/10.mp4" },
-    { id: 11, video: "../../public/videos/11.mp4" },
-    { id: 12, video: "../../public/videos/12.mp4" },
+    { id: 1, video: "/videos/1.mp4" },
+    { id: 2, video: "/videos/2.mp4" },
+    { id: 3, video: "/videos/3.mp4" },
+    { id: 4, video: "/videos/4.mp4" },
+    { id: 5, video: "/videos/5.mp4" },
+    { id: 7, video: "/videos/7.mp4" },
+    { id: 8, video: "/videos/8.mp4" },
+    { id: 9, video: "/videos/9.mp4" },
+    { id: 10, video: "/videos/10.mp4" },
+    { id: 11, video: "/videos/11.mp4" },
+    { id: 12, video: "/videos/12.mp4" },
   ];
 
   const handleNext = () => {

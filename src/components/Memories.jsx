@@ -4,32 +4,32 @@ import { Star, Sparkles } from 'lucide-react';
 const Memories = () => {
   const memoriesData = [
     {
-      imgSrc: "../../public/images/1.jpg",
+      imgSrc: "/images/1.jpg",
       // text: "First Birthday Celebration",
       date: "March 2023"
     },
     {
-      imgSrc: "../../public/images/2.jpg",
+      imgSrc: "/images/2.jpg",
       // text: "Family Birthday Dinner",
       date: "April 2023"
     },
     {
-      imgSrc: "../../public/images/3.jpg",
+      imgSrc: "/images/3.jpg",
       // text: "Birthday Party Games",
       date: "June 2023"
     },
     {
-      imgSrc: "../../public/images/4.jpg",
+      imgSrc: "/images/4.jpg",
       // text: "Cake Cutting Moment",
       date: "August 2023"
     },
     {
-      imgSrc: "../../public/images/5.jpg",
+      imgSrc: "/images/5.jpg",
       // text: "Birthday Surprises",
       date: "October 2023"
     },
     {
-      imgSrc: "../../public/images/6.jpg",
+      imgSrc: "/images/6.jpg",
       // text: "Birthday Adventures",
       date: "December 2023"
     },

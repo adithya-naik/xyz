@@ -51,22 +51,22 @@ const CustomCard = ({ imgSrc, text, gradient }) => {
 const CardContainer = () => {
   const cardData = [
     {
-      imgSrc: "../../public/images/1.jpg",
+      imgSrc: "/images/1.jpg",
       text: "",
       gradient: "from-pink-500 to-purple-500"
     },
     {
-      imgSrc: "../../public/images/2.jpg",
+      imgSrc: "/images/2.jpg",
       text: "",
       gradient: "from-blue-500 to-teal-500"
     },
     {
-      imgSrc: "../../public/images/3.jpg",
+      imgSrc: "/images/3.jpg",
       text: "",
       gradient: "from-orange-500 to-red-500"
     },
     {
-      imgSrc: "../../public/images/10.jpg",
+      imgSrc: "/images/10.jpg",
       text: "",
       gradient: "from-green-500 to-emerald-500"
     }

@@ -240,7 +240,7 @@ function App() {
             <div className="flex justify-center items-center">
               <img
                 className="rounded-full shadow-lg object-cover w-48 h-48 transition-transform transform hover:scale-105"
-                src="./public/images/1.jpg"
+                src="/images/1.jpg"
                 alt="Birthday Image"
               />
             </div>
