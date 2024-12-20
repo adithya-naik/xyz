@@ -1,44 +1,39 @@
 import React, { useState } from "react";
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Carousel = () => {
+const SwipeableCardList = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const projects = [
     {
       id: 1,
-      title: "ShakeShack",
-      image: "https://cdn.sanity.io/images/3vte03iz/production/3934c5000d7d4a36a249cd915464ead82672804b-2381x2381.jpg?auto=format&amp;w=1000&amp;h=1000",
-      link: "/shakeshack",
+      title: "Birthday Memories",
+      image: "/api/placeholder/1000/1000",
     },
     {
       id: 2,
-      title: "Jaffa",
-      video: "https://stream.mux.com/Lnj84JuJnW5ZZ0100Eu1j8ijJiXwqBeNsHtqnzO3um2hg.m3u8",
-      link: "/jaffa",
+      title: "Special Celebrations",
+      image: "/api/placeholder/1000/1000",
     },
     {
       id: 3,
-      title: "Caulfield Cup",
-      video: "https://stream.mux.com/N6Xh3gY02KL8VLoE8TwvqUmARSTFnHyxdhknq00LA7DwA.m3u8",
-      link: "/caulfield-cup",
+      title: "Party Moments",
+      image: "/api/placeholder/1000/1000",
     },
     {
       id: 4,
-      title: "Frugo",
-      video: "https://stream.mux.com/ejhv50001qeHns2HU6E007a18tUVN01TJStdIMcK8AFigmI.m3u8",
-      link: "/frugo",
+      title: "Cake Cutting",
+      image: "/api/placeholder/1000/1000",
     },
     {
       id: 5,
-      title: "Brompton",
-      image: "https://cdn.sanity.io/images/3vte03iz/production/fdcb516c840afca7e81dd9c22280046858bab0e4-1500x1500.jpg?auto=format&amp;w=1000&amp;h=1000",
-      link: "/brompton",
+      title: "Birthday Games",
+      image: "/api/placeholder/1000/1000",
     },
     {
       id: 6,
-      title: "260 Collins",
-      image: "https://cdn.sanity.io/images/3vte03iz/production/c9e0c0332346ea0e8031e53baa38cc69d44cb21f-2711x2711.png?auto=format&amp;w=1000&amp;h=1000",
-      link: "/260-collins",
+      title: "Happy Wishes",
+      image: "/api/placeholder/1000/1000",
     },
   ];
 
@@ -53,66 +48,67 @@ const Carousel = () => {
   };
 
   return (
-    <section className="index-page__project relative overflow-hidden">
-      <div className="text-block mb-8">
-        <h4 className="text-block__title text-2xl font-semibold text-gray-800">Featured Work</h4>
-        <p className="text-block__description text-lg text-gray-600">Select recent and notable projects</p>
-      </div>
+    <section className="relative overflow-hidden py-12 bg-gradient-to-b from-pink-50 to-purple-50">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-block mb-12 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Star className="text-pink-500" size={24} fill="pink" />
+            <h4 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 text-transparent bg-clip-text">
+              Birthday Moments
+            </h4>
+            <Star className="text-purple-500" size={24} fill="purple" />
+          </div>
+          <p className="text-lg text-gray-600">Capturing the joy of celebration</p>
+        </div>
 
-      {/* Carousel Container */}
-      <div className="carousel__container relative overflow-hidden">
-        <div className="carousel__track flex transition-transform duration-500 ease-in-out">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`carousel__slide flex-shrink-0 w-full ${currentIndex === index ? "opacity-100" : "opacity-0"}`}
-              style={{
-                transition: "opacity 0.5s ease",
-                transform: `translateX(-${currentIndex * 100}%)`,
-              }}
-            >
-              {project.image ? (
+        {/* Carousel Container */}
+        <div className="carousel__container relative overflow-hidden rounded-xl shadow-2xl">
+          <div className="carousel__track flex transition-transform duration-500 ease-in-out">
+            {projects.map((project, index) => (
+              <div
+                key={project.id}
+                className={`carousel__slide flex-shrink-0 w-full relative ${
+                  currentIndex === index ? "opacity-100" : "opacity-0"
+                }`}
+                style={{
+                  transition: "opacity 0.5s ease",
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                }}
+              >
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-72 object-cover rounded-lg shadow-lg" // Set height to 72 (18rem) and responsive width with rounded corners and shadow
+                  className="w-full h-96 object-cover"
                 />
-              ) : (
-                <video
-                  src={project.video}
-                  controls
-                  autoPlay
-                  loop
-                  muted
-                  className="w-full h-72 object-cover rounded-lg shadow-lg"
-                />
-              )}
-              <a
-                href={project.link}
-                className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-400 to-blue-500 text-white px-8 py-3 rounded-full cursor-pointer text-xl font-semibold shadow-lg"
-              >
-                {project.title}
-              </a>
-            </div>
-          ))}
-        </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+                  <div className="bg-white bg-opacity-90 backdrop-blur-md px-8 py-3 rounded-full shadow-lg">
+                    <span className="text-xl font-semibold bg-gradient-to-r from-pink-600 to-purple-600 text-transparent bg-clip-text">
+                      {project.title}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
-        {/* Navigation Buttons */}
-        <button
-          onClick={handlePrev}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full cursor-pointer hover:bg-gray-700"
-        >
-          Prev
-        </button>
-        <button
-          onClick={handleNext}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full cursor-pointer hover:bg-gray-700"
-        >
-          Next
-        </button>
+          {/* Navigation Buttons */}
+          <button
+            onClick={handlePrev}
+            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-md p-3 rounded-full cursor-pointer hover:bg-white transition-colors duration-300 group"
+          >
+            <ChevronLeft className="text-pink-600 group-hover:scale-110 transition-transform duration-300" size={24} />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-md p-3 rounded-full cursor-pointer hover:bg-white transition-colors duration-300 group"
+          >
+            <ChevronRight className="text-purple-600 group-hover:scale-110 transition-transform duration-300" size={24} />
+          </button>
+        </div>
       </div>
     </section>
   );
 };
 
-export default Carousel;
+export default SwipeableCardList;

@@ -1,83 +1,95 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Cake, Gift, PartyPopper, Heart, Star, Music } from 'lucide-react';
 
 const BirthdayGrid = () => {
-  const [items, setItems] = useState([]);
-
-  // Fetch random images and videos using placeholder APIs
-  useEffect(() => {
-    const fetchRandomItems = async () => {
-      const randomItems = [
-        {
-          src: 'https://source.unsplash.com/random/300x200/?balloon',
-          type: 'image',
-          text: 'Happy Birthday!',
-          aspectRatio: 'aspect-w-3 aspect-h-2', // 3:2 aspect ratio
-        },
-        {
-          src: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', // Sample placeholder video
-          type: 'video',
-          text: 'Make a Wish!',
-          aspectRatio: 'aspect-w-16 aspect-h-9', // 16:9 aspect ratio
-        },
-        {
-          src: 'https://source.unsplash.com/random/300x300/?cake',
-          type: 'image',
-          text: 'Surprise!',
-          aspectRatio: 'aspect-w-1 aspect-h-1', // Square aspect ratio
-        },
-        {
-          src: 'https://source.unsplash.com/random/400x300/?partyhat',
-          type: 'image',
-          text: 'Celebrate!',
-          aspectRatio: 'aspect-w-4 aspect-h-3', // 4:3 aspect ratio
-        },
-        {
-          src: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', // Sample placeholder video
-          type: 'video',
-          text: 'Let’s Party!',
-          aspectRatio: 'aspect-w-16 aspect-h-9', // 16:9 aspect ratio
-        },
-        {
-          src: 'https://source.unsplash.com/random/250x250/?gift',
-          type: 'image',
-          text: 'Cheers!',
-          aspectRatio: 'aspect-w-3 aspect-h-2', // 3:2 aspect ratio
-        },
-      ];
-
-      setItems(randomItems);
-    };
-
-    fetchRandomItems();
-  }, []);
+  const items = [
+    {
+      src: "/api/placeholder/300/200",
+      text: "Happy Birthday!",
+      icon: Cake,
+      gradient: "from-pink-500 to-purple-500"
+    },
+    {
+      src: "/api/placeholder/400/225",
+      text: "Make a Wish!",
+      icon: Star,
+      gradient: "from-blue-500 to-teal-500"
+    },
+    {
+      src: "/api/placeholder/300/300",
+      text: "Surprise!",
+      icon: Gift,
+      gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      src: "/api/placeholder/400/300",
+      text: "Celebrate!",
+      icon: PartyPopper,
+      gradient: "from-teal-500 to-blue-500"
+    },
+    {
+      src: "/api/placeholder/300/200",
+      text: "Let's Party!",
+      icon: Music,
+      gradient: "from-pink-500 to-purple-500"
+    },
+    {
+      src: "/api/placeholder/300/300",
+      text: "Cheers!",
+      icon: Heart,
+      gradient: "from-purple-500 to-blue-500"
+    }
+  ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-      {items.map((item, index) => (
-        <div
-          key={index}
-          className={`relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 hover:rotate-2 cursor-pointer bg-white filter hover:brightness-110 ${item.aspectRatio}`}
-        >
-          {item.type === 'image' ? (
-            <img
-              src={item.src}
-              alt={`Birthday Item ${index}`}
-              className="w-full h-full object-cover transition-transform duration-300"
-            />
-          ) : (
-            <video
-              src={item.src}
-              className="w-full h-full object-cover transition-transform duration-300"
-              autoPlay
-              loop
-              muted
-            />
-          )}
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-60 text-white px-4 py-2 text-lg font-bold rounded-md opacity-0 transition-opacity duration-300 transform translate-y-2 hover:opacity-100 hover:translate-y-0">
-            {item.text}
-          </div>
+    <div className="bg-gradient-to-b from-pink-50 to-purple-50 p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <Star className="text-pink-500" size={24} fill="pink" />
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 text-transparent bg-clip-text">
+            Birthday Moments
+          </h2>
+          <Star className="text-purple-500" size={24} fill="purple" />
         </div>
-      ))}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {items.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={index}
+                className="relative group overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl bg-white"
+              >
+                {/* Background gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
+                
+                {/* Image */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src={item.src}
+                    alt={`Birthday Item ${index + 1}`}
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  
+                  {/* Icon overlay */}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg transform rotate-0 group-hover:rotate-12 transition-transform duration-500">
+                    <Icon className="w-6 h-6 text-pink-500" />
+                  </div>
+                </div>
+
+                {/* Text overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <p className="text-white text-xl font-bold text-center">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

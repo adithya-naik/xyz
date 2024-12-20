@@ -1,23 +1,48 @@
 import React from 'react';
+import { Star, Heart } from 'lucide-react';
 
 const CustomCard = ({ imgSrc, text, gradient }) => {
   return (
-    <div className="group relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out transform-gpu">
-      {/* Gradient Overlay */}
+    <div className="group relative overflow-visible bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out transform-gpu my-12 mx-2">
+      {/* Decorative icons - made larger and more visible */}
+      <div className="absolute -top-8 -left-6 text-pink-500 transform -rotate-12">
+        <Star size={40} strokeWidth={1.5} fill="pink" className="filter drop-shadow-md" />
+      </div>
+      <div className="absolute -top-8 -right-6 text-purple-500 transform rotate-12">
+        <Star size={40} strokeWidth={1.5} fill="purple" className="filter drop-shadow-md" />
+      </div>
+      
+      {/* Additional decorative stars */}
+      <div className="absolute -bottom-4 -left-4 text-pink-400 transform rotate-45">
+        <Star size={32} strokeWidth={1.5} fill="pink" className="filter drop-shadow-md" />
+      </div>
+      <div className="absolute -bottom-4 -right-4 text-purple-400 transform -rotate-45">
+        <Star size={32} strokeWidth={1.5} fill="purple" className="filter drop-shadow-md" />
+      </div>
+      
+      {/* Gradient overlay */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-300`}
+        className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-40 transition-opacity duration-300`}
       />
-      <div className="relative">
+      
+      {/* Image container */}
+      <div className="relative p-3">
         <img
           src={imgSrc}
           alt="Card"
-          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105 rounded-t-lg"
+          className="w-full h-56 object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
         />
       </div>
+      
+      {/* Text container */}
       <div className="p-6">
-        <p className="text-xl font-semibold text-center text-gray-800 transform transition-all duration-300 group-hover:scale-105">
-          {text}
-        </p>
+        <div className="flex items-center justify-center gap-3 mb-2">
+          <Heart className="text-pink-500" size={24} fill="pink" />
+          <p className="text-xl font-semibold text-center text-gray-800 transition-all duration-300 group-hover:scale-105">
+            {text}
+          </p>
+          <Heart className="text-pink-500" size={24} fill="pink" />
+        </div>
       </div>
     </div>
   );
@@ -27,28 +52,28 @@ const CardContainer = () => {
   const cardData = [
     {
       imgSrc: "/api/placeholder/300/200",
-      text: "Card 1 - Exploring React",
+      text: "Birthday Celebrations",
       gradient: "from-pink-500 to-purple-500"
     },
     {
       imgSrc: "/api/placeholder/300/200",
-      text: "Card 2 - Building Projects",
+      text: "Party Packages",
       gradient: "from-blue-500 to-teal-500"
     },
     {
       imgSrc: "/api/placeholder/300/200",
-      text: "Card 3 - Creative Ideas",
+      text: "Special Themes",
       gradient: "from-orange-500 to-red-500"
     },
     {
       imgSrc: "/api/placeholder/300/200",
-      text: "Card 4 - React Best Practices",
+      text: "Custom Events",
       gradient: "from-green-500 to-emerald-500"
     }
   ];
 
   return (
-    <div className="bg-gray-100 p-8">
+    <div className="bg-gray-50 py-12 px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         {cardData.map((card, index) => (
           <CustomCard
